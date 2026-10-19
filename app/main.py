@@ -1,5 +1,5 @@
 from data.productos import productos
-from flask import Flask, render_template, request, url_for, redirect, abort
+from flask import Flask, abort, redirect, render_template, request, url_for
 from form import LoginForm
 
 # Inicializamos la aplicación
@@ -97,6 +97,11 @@ def gracias():
 @app.errorhandler(404)
 def pagina_no_encontrada(e):
     return render_template("404.html"), 404
+
+
+@app.route("/acerca_de_nosotros")
+def nosotros():
+    return render_template("acerca_de_nosotros.html")
 
 
 if __name__ == "__main__":

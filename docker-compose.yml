@@ -4,7 +4,7 @@ services:
     build: .
     
     # Le damos un nombre amigable al contenedor (opcional, pero buena práctica)
-    container_name: servidor-flask
+    container_name: viaje-medida
     
     # Mapeo de puertos (Host:Contenedor)
     ports:

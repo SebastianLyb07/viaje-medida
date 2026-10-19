@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,7 @@
 
         <nav>
             <ul>
+                <li><a href="{{url_for('nosotros')}}">Acerca de nosotros</a></li>
                 <li>
                     <a href="{{ url_for('home') }}">Inicio</a>
                 </li>
@@ -21,7 +22,7 @@
                     <a href="{{ url_for('saludo', name='invitado') }}">Saluda</a>
                 </li>
                 <li>
-                    <a href="{{ url_for('catalogo') }}"">Catalogo</a>
+                    <a href="{{ url_for('catalogo') }}">Catalogo</a>
                 </li>
                 <li>
                     <a href=" {{ url_for('contacto') }}">Contacto</a>
