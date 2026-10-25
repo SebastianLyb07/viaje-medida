@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}No encontrado{% endblock %}
+
+{% block contenido %}
+<div class="centro">
+  <img src="{{ url_for('static', filename='logo.svg') }}" alt="Tu Viaje a Medida" width="120">
+
+  <h1>Contenido no disponible</h1>
+  <p>Lo sentimos, lo que buscas no existe o ya no está en nuestro catálogo.</p>
+
+  <a class="btn" href="{{ url_for('inicio') }}">Volver al inicio</a>
+</div>
+{% endblock %}

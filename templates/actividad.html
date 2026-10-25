@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ a.nombre }}{% endblock %}
+
+{% block contenido %}
+<h1>{{ a.nombre }}</h1>
+
+<ul>
+  <li>Duración: {{ a.horas }} h</li>
+  <li>Precio: {{ a.precio }} € por persona</li>
+  {% if a.dificultad %}
+    <li>Dificultad: {{ a.dificultad }}</li>
+  {% endif %}
+  {% if a.edad_minima %}
+    <li>Edad mínima: {{ a.edad_minima }} años</li>
+  {% endif %}
+  {% if a.incluye %}
+    <li>Incluye: {{ a.incluye }}</li>
+  {% endif %}
+</ul>
+
+<a class="btn" href="{{ url_for('destino', slug=d.slug) }}">Ver guía completa de {{ d.nombre }}</a>
+{% endblock %}

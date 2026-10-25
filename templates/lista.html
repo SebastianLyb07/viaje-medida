@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block contenido %}
+<h1>{{ titulo }}</h1>
+
+<ul>
+  {% for i in items %}
+    <li>
+      {% if tipo == 'destino' %}
+        <a href="{{ url_for('destino', slug=i.slug) }}">{{ i.nombre }}</a>
+        — {{ i.pais }}
+      {% elif tipo == 'alojamiento' %}
+        <a href="{{ url_for('alojamiento', id_=i.id) }}">{{ i.nombre }}</a>
+        — {{ i.tipo|capitalize }}
+      {% else %}
+        <a href="{{ url_for('actividad', id_=i.id) }}">{{ i.nombre }}</a>
+        — {{ i.destino_nombre }}
+      {% endif %}
+    </li>
+  {% else %}
+    <li class="aviso">No hay elementos en este listado.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

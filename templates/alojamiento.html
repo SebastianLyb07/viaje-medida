@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ a.nombre }}{% endblock %}
+
+{% block contenido %}
+<h1>{{ a.nombre }}</h1>
+
+<ul>
+  <li>Modalidad: {{ a.tipo|capitalize }}</li>
+  {% if a.estrellas %}
+    <li>Categoría: {{ '★' * a.estrellas }} ({{ a.estrellas }} estrellas)</li>
+  {% endif %}
+  <li>Precio: {{ a.precio }} € por noche</li>
+  <li>Desayuno: {{ 'Incluido' if a.desayuno else 'No incluido' }}</li>
+  <li>Mascotas: {{ 'Admitidas' if a.mascotas else 'No admitidas' }}</li>
+  {% if a.extra %}
+    <li>{{ a.extra }}</li>
+  {% endif %}
+</ul>
+
+<a class="btn" href="{{ url_for('destino', slug=d.slug) }}">Ver guía completa de {{ d.nombre }}</a>
+{% endblock %}

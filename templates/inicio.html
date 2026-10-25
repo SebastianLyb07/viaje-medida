@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block titulo %}Inicio{% endblock %}
+
+{% block contenido %}
+<section class="centro">
+    <h1>Viajes personalizados, a tu medida</h1>
+    <p>Somos una agencia especializada en experiencias personalizadas.
+       Explora nuestro catálogo o deja que te recomendemos.</p>
+    <p>
+        <a class="btn" href="{{ url_for('lista_destinos') }}">Explorar el catálogo</a>
+        <a class="btn" href="{{ url_for('viaje_a_medida') }}">Recomiéndame un viaje</a>
+    </p>
+</section>
+
+<section class="stats">
+    <div><strong>{{ totales.destinos }}</strong> Destinos</div>
+    <div><strong>{{ totales.alojamientos }}</strong> Alojamientos</div>
+    <div><strong>{{ totales.actividades }}</strong> Actividades</div>
+</section>
+{% endblock %}

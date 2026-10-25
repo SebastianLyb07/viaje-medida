@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ d.nombre }}{% endblock %}
+
+{% block contenido %}
+<h1>{{ d.nombre }}</h1>
+
+{% if d.imagen %}
+  <img src="{{ url_for('static', filename=d.imagen) }}" alt="{{ d.nombre }}" style="max-width:100%">
+{% endif %}
+
+<ul>
+  <li>País: {{ d.pais }}</li>
+  <li>Entorno: {{ d.entorno }}</li>
+  <li>Mejor época: {{ d.temporada_alta }}</li>
+  <li>Visado: {{ 'Obligatorio' if d.visado else 'No requerido' }}</li>
+  {% if d.consejo %}
+    <li>Consejo: {{ d.consejo }}</li>
+  {% endif %}
+</ul>
+
+<h2>Alojamientos</h2>
+
+{% if alojamientos %}
+  <ul>
+    {% for a in alojamientos %}
+      <li><a href="{{ url_for('alojamiento', id_=a.id) }}">{{ a.nombre }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="aviso">Todavía no tenemos alojamientos disponibles en este destino.</p>
+{% endif %}
+
+<h2>Actividades</h2>
+
+{% if actividades %}
+  <ul>
+    {% for a in actividades %}
+      <li><a href="{{ url_for('actividad', id_=a.id) }}">{{ a.nombre }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="aviso">Todavía no tenemos actividades disponibles en este destino.</p>
+{% endif %}
+{% endblock %}

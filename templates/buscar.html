@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block contenido %}
+<h1>{{ titulo }}</h1>
+
+<form method="get">
+  {% for f in form %}
+    <p>
+      {% if f.type == 'BooleanField' %}
+        {{ f() }} {{ f.label.text }}
+      {% else %}
+        {{ f.label }} {{ f() }}
+      {% endif %}
+
+      {% for e in f.errors %}
+        <span class="error">{{ e }}</span>
+      {% endfor %}
+    </p>
+  {% endfor %}
+
+  <button type="submit">Buscar</button>
+</form>
+
+{% if resultados is not none %}
+  <h2>Resultados</h2>
+
+  {% if resultados %}
+    <ul>
+      {% for r in resultados %}
+        <li>
+          {% if tipo == 'destino' %}
+            <a href="{{ url_for('destino', slug=r.slug) }}">{{ r.nombre }}</a>
+            ({{ r.pais }}, {{ r.entorno }})
+          {% elif tipo == 'alojamiento' %}
+            <a href="{{ url_for('alojamiento', id_=r.id) }}">{{ r.nombre }}</a>
+            — {{ r.tipo }} en {{ r.destino_nombre }}, {{ r.precio }} €/noche
+          {% else %}
+            <a href="{{ url_for('destino', slug=r[0].slug) }}">{{ r[0].nombre }}</a>
+            + <a href="{{ url_for('alojamiento', id_=r[1].id) }}">{{ r[1].nombre }}</a>
+            ({{ r[1].precio }} €/noche)
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="aviso">Ninguna opción cumple todos los criterios. Prueba a relajar algún filtro.</p>
+  {% endif %}
+{% endif %}
+{% endblock %}
