@@ -19,10 +19,6 @@ header {
   flex-wrap: wrap;
 }
 
-header img {
-  height: 36px;
-}
-
 nav a {
   color: #fff;
   margin-right: 1rem;
